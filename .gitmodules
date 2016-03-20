@@ -1,0 +1,3 @@
+[submodule "candyshop"]
+	path = candyshop
+	url = https://github.com/candy-chat/candy-plugins
