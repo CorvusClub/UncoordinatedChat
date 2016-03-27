@@ -5,15 +5,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>UncoordinatedChat WIP</title>
 	<link rel="shortcut icon" href="candy/res/img/favicon.png" type="image/gif" />
-	<link rel="stylesheet" type="text/css" href="candy/libs.min.css" />
-	<link rel="stylesheet" type="text/css" href="candy/res/default.css" />
+	<link rel="stylesheet" type="text/css" href="/candy/libs.min.css" />
+	<link rel="stylesheet" type="text/css" href="/candy/res/default.css" />
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="candy/libs.min.js"></script>
-	<script type="text/javascript" src="candy/candy.min.js"></script>
+	<script type="text/javascript" src="/candy/libs.min.js"></script>
+	<script type="text/javascript" src="/candy/candy.min.js"></script>
+	<script type="text/javascript" src="/.well-known/xmpp/candy/prosody.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			Candy.init('/.well-known/xmpp/bosh', {
+			boshParser = document.createElement('a');
+			boshParser.href = Prosody.bosh_path;
+
+			console.log("Loading Candy chat version " + Candy.about.version);
+			console.log("Connecting to prosody chat server version " + Prosody.version);
+			console.log("XMPP BOSH XEP-0124 path is " + boshParser.pathname);
+			console.log("Anonymous auth? " + Prosody.anonymous);
+
+			Candy.init(boshParser.pathname, {
 				core: {
 					// only set this to true if developing / debugging errors
 					debug: true,
